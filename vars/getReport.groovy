@@ -45,7 +45,7 @@ def call(String filePath, String excelFileArchived, Map rationalLogs){
     stableText += "<br><b>LINUX</b>"
     stableText += "<br><a href='www.google.pl'>Logowanie SAP</a>"
     stableText += "<br><a href='www.google.pl'>Ksiegowanie</a>"
-    stableText += "<br><a href='www.google.pl'>Zapisanie</a>
+    stableText += "<br><a href='www.google.pl'>Zapisanie</a>"
     
 
     rtp parserName: 'HTML', stableText: "${stableText}"
