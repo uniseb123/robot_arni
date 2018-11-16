@@ -1,4 +1,4 @@
-def call(String filePath, String excelFileArchived, Map rationalLogs){
+def call(){
     currentBuild.result = "SUCCESS"
     rtp parserName: 'HTML', stableText: "<a href='www.google.pl'>RAPORT</a>"
     rtp parserName: 'HTML', stableText: "<a href='www.google.pl'>DANE WEJSCIOWE</a>"
