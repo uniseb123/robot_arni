@@ -31,7 +31,7 @@ def call(String issueKey, int result, String testFile){
         }
 
 
-        def json = JsonOutput.toJson([issueKey: "$issueKey", result: "$result", testFile: "$testFile", report: "$destination\\WeryfikacjaKosztowWariantowTest.html"])
+        def json = JsonOutput.toJson([issueKey: "$issueKey", result: "$result", testFile: "$testFile", report: "$destination\\\\WeryfikacjaKosztowWariantowTest.html"])
         def http = new URL("http://localhost:8080/rest/scriptrunner/latest/custom/setTestResult").openConnection() as HttpURLConnection
         http.setRequestMethod('POST')
         http.setDoOutput(true)
