@@ -3,12 +3,13 @@
  */
 
 import groovy.json.JsonSlurper
+import groovy.json.JsonOutput
 
 def call(String issueKey, int result, String testFile){
 
     try {
 
-        def json = JsonOutput.toJson([issueKey: $issueKey, result: $result, testFile: $testFile])
+        def json = JsonOutput.toJson([issueKey: "$issueKey", result: "$result", testFile: "$testFile"])
         def http = new URL("http://localhost:8080/rest/scriptrunner/latest/custom/setTestResult").openConnection() as HttpURLConnection
         http.setRequestMethod('POST')
         http.setDoOutput(true)
@@ -31,5 +32,6 @@ def call(String issueKey, int result, String testFile){
     } catch (Exception e) {
         throw e
     }
-
 }
+
+this.call("PTU-1", 1, "asd")
