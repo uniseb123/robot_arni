@@ -4,7 +4,7 @@
 
 import groovy.json.JsonSlurper
 
-def call(String issueKey, String result, String testFile){
+def call(String issueKey, int result, String testFile){
 
     try {
         def body = """{"issueKey": "$issueKey", "result": "$result", "testFile": "$testFile"}"""
