@@ -7,14 +7,15 @@ import groovy.json.JsonSlurper
 def call(String issueKey, int result, String testFile){
 
     try {
-        def body = """{"issueKey": "$issueKey", "result": "$result", "testFile": "$testFile"}"""
+
+        def json = JsonOutput.toJson([issueKey: $issueKey, result: $result, testFile: $testFile])
         def http = new URL("http://localhost:8080/rest/scriptrunner/latest/custom/setTestResult").openConnection() as HttpURLConnection
         http.setRequestMethod('POST')
         http.setDoOutput(true)
         http.setRequestProperty("Accept", 'application/json')
         http.setRequestProperty("Content-Type", 'application/json')
 
-        http.outputStream.write(body.getBytes("UTF-8"))
+        http.outputStream.write(json.getBytes("UTF-8"))
         http.connect()
 
         def response = [:]
