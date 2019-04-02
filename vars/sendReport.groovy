@@ -31,10 +31,16 @@ def call(String issueKey, int result, String testFile){
         }
 
 
+        String userCredentials = "admin:admin";
+        String basicAuth = "Basic " + new String(Base64.getEncoder().encode(userCredentials.getBytes()));
+
+
+
         def json = JsonOutput.toJson([issueKey: "$issueKey", result: "$result", testFile: "$testFile", report: "$destination\\\\WeryfikacjaKosztowWariantowTest.html"])
         def http = new URL("http://localhost:8080/rest/scriptrunner/latest/custom/setTestResult").openConnection() as HttpURLConnection
         http.setRequestMethod('POST')
         http.setDoOutput(true)
+        http.setRequestProperty("Authorization", basicAuth);
         http.setRequestProperty("Accept", 'application/json')
         http.setRequestProperty("Content-Type", 'application/json')
 
