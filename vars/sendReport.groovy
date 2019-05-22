@@ -37,7 +37,7 @@ def call(String issueKey, int result, String testFile){
 
 
         def json = JsonOutput.toJson([issueKey: "$issueKey", result: "$result", testFile: "$testFile", report: "$destination\\\\WeryfikacjaKosztowWariantowTest.html", screens: "$destination\\\\WeryfikacjaKosztowWariantowTest\\"])
-        def http = new URL("http://localhost:8082/rest/scriptrunner/latest/custom/setTestResult").openConnection() as HttpURLConnection
+        def http = new URL("http://localhost:8081/rest/scriptrunner/latest/custom/setTestResult").openConnection() as HttpURLConnection
         http.setRequestMethod('POST')
         http.setDoOutput(true)
         http.setRequestProperty("Authorization", basicAuth);
